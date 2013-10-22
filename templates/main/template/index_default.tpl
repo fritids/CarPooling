@@ -68,7 +68,7 @@
 	
           <!-- Navigation item -->
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
           </ul>
 		  <ul>
             <li><a href="index.html">Cerca un passaggio</a></li>
