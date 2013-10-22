@@ -86,7 +86,7 @@
                     <li><a href="?controller=registrazione&task=gestisci_profilo">Gestisci</li>
                 </ul>
                 {/if}
-                    
+            </li>        
           </ul>          
 
           <!-- Navigation item -->
