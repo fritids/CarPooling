@@ -4,6 +4,8 @@
         <div class="loginform">
           <form method="post" action="index.html"> 
             <p><input type="hidden" name="rememberme" value="0" /></p>
+            <p><input type="hidden" name="controller" value="registrazione" /></p>
+            <p><input type="hidden" name="task" value="autentica" /></p>
             <fieldset>
               <p><label for="username_1" class="top">Username:</label><br />
                 <input type="text" name="username_1" id="username_1" tabindex="1" class="field" value="" /></p>
