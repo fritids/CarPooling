@@ -70,9 +70,8 @@ class VHome extends View {
      */
     public function impostaPaginaRegistrato() {
         $session=USingleton::getInstance('USession');
-        $this->assign('title','CarPooling');
-        $nome_cognome=$session->leggi_valore('nome_cognome');
-        $this->assign('titolo_principale','Benvenuto '.$nome_cognome);
+        $username=$session->leggi_valore('username');
+        $this->assign('colonna_laterale','Benvenuto '.$username);
         $this->assign('corpo_centrale',$this->corpo_centrale);
         $this->assign('menu',$this->pulsante_menu);
         $this->aggiungiTastoLogout();
@@ -82,8 +81,7 @@ class VHome extends View {
      * imposta la pagina per gli utenti non registrati/autenticati
      */
     public function impostaPaginaVisitatore() {
-        $this->assign('title','CarPooling');
-        $this->assign('titolo_principale','Benvenuto ospite');
+        $this->assign('titolo_principale','');
         $this->assign('corpo_centrale',$this->corpo_centrale);
         $this->assign('menu',$this->pulsante_menu);
         $this->aggiungiModuloLogin();
