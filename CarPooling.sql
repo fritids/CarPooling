@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generato il: Ott 17, 2013 alle 17:27
+-- Generato il: Ott 22, 2013 alle 17:26
 -- Versione del server: 5.5.27
 -- Versione PHP: 5.4.7
 
@@ -39,12 +39,12 @@ CREATE TABLE IF NOT EXISTS `guidatore` (
 
 --
 -- RELATIONS FOR TABLE `guidatore`:
---   `num_viaggio`
---       `viaggio` -> `num_viaggio`
 --   `username_guidatore`
 --       `utente` -> `username`
 --   `targa`
 --       `veicolo` -> `targa`
+--   `num_viaggio`
+--       `viaggio` -> `num_viaggio`
 --
 
 -- --------------------------------------------------------
@@ -66,10 +66,10 @@ CREATE TABLE IF NOT EXISTS `passeggero` (
 
 --
 -- RELATIONS FOR TABLE `passeggero`:
---   `num_viaggio`
---       `viaggio` -> `num_viaggio`
 --   `username_passeggero`
 --       `utente` -> `username`
+--   `num_viaggio`
+--       `viaggio` -> `num_viaggio`
 --
 
 -- --------------------------------------------------------
@@ -89,8 +89,17 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `codice_fiscale` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `num_telefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `stato_attivazione` enum('attivo','non_attivo','','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codice_attivazione` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `utente`
+--
+
+INSERT INTO `utente` (`username`, `password`, `nome`, `cognome`, `data_nascita`, `citta_nascita`, `citta_residenza`, `codice_fiscale`, `email`, `num_telefono`, `stato_attivazione`, `codice_attivazione`) VALUES
+('vaan46', '1234', 'daniele', 'ciambrone', '1991-08-17', 'L''aquila', 'L''aquila', 'CMBDNL91M17A345D', 'vaan46@hotmail.it', '3473135445', 'attivo', '12345678912345678912');
 
 -- --------------------------------------------------------
 
@@ -138,16 +147,16 @@ CREATE TABLE IF NOT EXISTS `viaggio` (
 -- Limiti per la tabella `guidatore`
 --
 ALTER TABLE `guidatore`
-  ADD CONSTRAINT `guidatore_ibfk_3` FOREIGN KEY (`num_viaggio`) REFERENCES `viaggio` (`num_viaggio`),
   ADD CONSTRAINT `guidatore_ibfk_1` FOREIGN KEY (`username_guidatore`) REFERENCES `utente` (`username`),
-  ADD CONSTRAINT `guidatore_ibfk_2` FOREIGN KEY (`targa`) REFERENCES `veicolo` (`targa`);
+  ADD CONSTRAINT `guidatore_ibfk_2` FOREIGN KEY (`targa`) REFERENCES `veicolo` (`targa`),
+  ADD CONSTRAINT `guidatore_ibfk_3` FOREIGN KEY (`num_viaggio`) REFERENCES `viaggio` (`num_viaggio`);
 
 --
 -- Limiti per la tabella `passeggero`
 --
 ALTER TABLE `passeggero`
-  ADD CONSTRAINT `passeggero_ibfk_2` FOREIGN KEY (`num_viaggio`) REFERENCES `viaggio` (`num_viaggio`),
-  ADD CONSTRAINT `passeggero_ibfk_1` FOREIGN KEY (`username_passeggero`) REFERENCES `utente` (`username`);
+  ADD CONSTRAINT `passeggero_ibfk_1` FOREIGN KEY (`username_passeggero`) REFERENCES `utente` (`username`),
+  ADD CONSTRAINT `passeggero_ibfk_2` FOREIGN KEY (`num_viaggio`) REFERENCES `viaggio` (`num_viaggio`);
 
 --
 -- Limiti per la tabella `veicolo`
