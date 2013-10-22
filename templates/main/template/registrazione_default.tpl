@@ -2,7 +2,7 @@
 <div class="main-navigation">
         <h1>Login</h1>
         <div class="loginform">
-          <form method="post" action="index.html"> 
+          <form method="post" action="index.php"> 
             <p><input type="hidden" name="rememberme" value="0" /></p>
             <p><input type="hidden" name="controller" value="registrazione" /></p>
             <p><input type="hidden" name="task" value="autentica" /></p>
