@@ -75,7 +75,7 @@ class VHome extends View {
         $this->assign('corpo_centrale',$this->corpo_centrale);
         $this->assign('menu',$this->pulsante_menu);
         $this->aggiungiTastoLogout();
-        $this->assign('registrato',true);
+        
     }
     /*
      * imposta la pagina per gli utenti non registrati/autenticati

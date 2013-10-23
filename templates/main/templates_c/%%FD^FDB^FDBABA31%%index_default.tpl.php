@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-10-22 10:24:42
+<?php /* Smarty version 2.6.26, created on 2013-10-23 10:48:49
          compiled from index_default.tpl */ ?>
 <html>
 
@@ -70,7 +70,7 @@
 	
           <!-- Navigation item -->
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
           </ul>
 		  <ul>
             <li><a href="index.html">Cerca un passaggio</a></li>
@@ -81,6 +81,8 @@
           <ul>
             <li><?php if (( ! $this->_tpl_vars['registrato'] )): ?>
                 <a href="?controller=registrazione&task=registra">Registrati</a>
+                <?php echo $this->_tpl_vars['errore']; ?>
+
                 <?php else: ?>
                 <a href="#">Account</a>
                 <ul>
@@ -129,6 +131,7 @@
         <!-- Login -->
         <?php echo $this->_tpl_vars['colonna_laterale']; ?>
 
+        
 </div>
        
 

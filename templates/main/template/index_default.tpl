@@ -79,6 +79,7 @@
           <ul>
             <li>{if (!$registrato)}
                 <a href="?controller=registrazione&task=registra">Registrati</a>
+                {$errore}
                 {else}
                 <a href="#">Account</a>
                 <ul>
@@ -125,6 +126,7 @@
 
         <!-- Login -->
         {$colonna_laterale}
+        
 </div>
        
 

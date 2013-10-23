@@ -11,14 +11,14 @@ class EUtente {
    public $email;
    public $num_telefono;
    public $codice_attivazione;
-   public $stato;
+   public $stato_attivazione;
    
    public $_guidatore=array();
    public $_passeggero=array();
    public $_veicoli=array();
    
    public function getAccountAttivo() {
-        if ($this->stato=='attivo')
+        if ($this->stato_attivazione=='attivo')
             return true;
         else
             return false;

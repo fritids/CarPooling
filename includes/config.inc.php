@@ -19,7 +19,7 @@ $config['debug']=false;
 $config['mysql']['user'] = 'root';
 $config['mysql']['password'] = 'pippo';
 $config['mysql']['host'] = 'localhost';
-$config['mysql']['database'] = 'bookstore';
+$config['mysql']['database'] = 'carpooling';
 
 //configurazione server smtp per invio email
 $config['smtp']['host'] = 'smtp.cheapnet.it';
