@@ -23,7 +23,23 @@
   <link rel="stylesheet" type="text/css" media="screen,projection,print" href="templates/main/template/css/layout3_text.css" />
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
   <title>CarPooling</title>
-  <script src="js/jquery-1.10.3.min.js"></script>
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script  type="text/javascript">
+      {literal}
+      $(initmenu);
+      function initmenu(){
+          $("#prova").hover(slidedown,slideup);
+      }
+      function slidedown(){
+          $("ul#menu_profilo").slideDown("medium");
+      } 
+      function slideup(){
+          $("ul#menu_profilo").slideUp("fast");
+      }    
+      
+      {/literal}
+  </script>
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
@@ -70,25 +86,17 @@
           <!-- Navigation item -->
           <ul>
             <li><a href="index.php?controller=&task=" >Home</a></li>
-          </ul>
-		  <ul>
             <li><a href="index.html">Cerca un passaggio</a></li>
-          </ul>
-		  <ul>
             <li><a href="index.php?controller=ricerca&task=inserimento">Offri un passaggio</a></li>
-          </ul>
-          <ul>
-            <li>{if (!$registrato)}
-                <a href="?controller=registrazione&task=registra">Registrati</a>
-                {$errore}
+            <li id="prova">{if (!$registrato)}
+                <a href="?controller=registrazione&task=registra">Registrati</a></li>
                 {else}
-                <a href="#">Account</a>
-                <ul>
+            <a href="#">Account</a>
+                 <ul id="menu_profilo">
                     <li><a href="?controller=registrazione&task=visualizza_profilo">Profilo</a></li>
                     <li><a href="?controller=registrazione&task=gestisci_profilo">Gestisci</a></li>
-                </ul>
-                {/if}
-            </li>        
+                 </ul>   
+                {/if}      
           </ul>          
 
           <!-- Navigation item -->
