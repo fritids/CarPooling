@@ -90,6 +90,53 @@ class CRicerca {
      *
      * @return string
      */
+    
+    
+    public function inserisciViaggio() {
+        $session=USingleton::getInstance('USession');
+        $username=$session->leggi_valore('username');
+        if ($username!=false) {
+            $view=Usingleton::getInstance('VRicerca');
+            $EViaggio=new EViaggio();
+            $EViaggio->citta_partenza=$view->getCittaPartenza();
+            $EViaggio->citta_arrivo=$view->getCittaArrivo();
+            $EViaggio->data_partenza=$view->getDataPartenza();
+            $EViaggio->note=$view->getNote();
+            $FViaggio=new FViaggio();
+            $FViaggio->store($EViaggio);
+            $num_viaggio=$FViaggio->getUltimoNumViaggio();
+            return $this->riepilogoViaggio($num_viaggio);
+        }
+    }
+    
+    public function riepilogoViaggio($num_viaggio){
+            $FViaggio=new FViaggio();
+            $viaggio=$FViaggio->load($num_viaggio);
+            $view=USingleton::getInstance('VRicerca');
+            $view->impostaDati('num_viaggio',$viaggio->num_viaggio);
+            $view->impostaDati('citta_partenza',$viaggio->citta_partenza);
+            $view->impostaDati('citta_arrivo',$viaggio->citta_arrivo);
+            $view->impostaDati('data_partenza',$viaggio->data_partenza);
+            $view->impostaDati('note',$viaggio->note);
+            $view->setLayout('riepilogo');
+            return $view->processaTemplate();
+            
+     }
+     
+     public function inserimentoViaggio(){
+        $session=USingleton::getInstance('USession');
+        $username=$session->leggi_valore('username');
+        if ($username!=false) {
+            $view=USingleton::getInstance('VRicerca');
+            $view->setLayout('inserisci');
+     }
+        else {
+            $view=USingleton::getInstance('VRicerca');
+            $view->setLayout('errore');
+        }
+        return $view->processaTemplate();
+     }
+     
     public function inserisciCommento() {
         $session=USingleton::getInstance('USession');
         $username=$session->leggi_valore('username');
@@ -116,8 +163,10 @@ class CRicerca {
                 return $this->ultimiArrivi();
             case 'dettagli':
                 return $this->dettagli();
-            case 'Inserisci':
-                return $this->inserisciCommento();
+            case 'inserimento':
+                return $this->inserimentoViaggio();
+            case 'inserisci':
+                return $this->inserisciViaggio();
             case 'lista':
                 return $this->lista();
             case 'Cerca':

@@ -7,7 +7,7 @@ class EUtente {
    public $data_nascita;
    public $citta_nascita;
    public $citta_residenza;
-   public $codice_fiscale;
+   public $cod_fiscale;
    public $email;
    public $num_telefono;
    public $codice_attivazione;
@@ -27,6 +27,10 @@ class EUtente {
    public function generaCodiceAttivazione() {
         $this->codice_attivazione=mt_rand();
     }
+    
+   public function setAccountAttivo() {
+       $this->stato_attivazione='attivo';
+   }
    
   
    

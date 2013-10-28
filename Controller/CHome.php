@@ -27,6 +27,9 @@ class CHome {
             case 'registrazione':
                 $CRegistrazione=USingleton::getInstance('CRegistrazione');
                 return $CRegistrazione->smista();
+            case 'ricerca':
+                $CRicerca=USingleton::getInstance('CRicerca');
+                return $CRicerca->smista();
             default:
                 $CRicerca=USingleton::getInstance('CRicerca');
                 return $CRicerca->index();

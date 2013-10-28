@@ -85,9 +85,11 @@ class CRegistrazione {
                     $utente->$keys[$i]=$dato;
                     $i++;
                 }
-                $utente->generaCodiceAttivazione();
+                //$utente->generaCodiceAttivazione();
+                $utente->setAccountAttivo();
                 $FUtente->store($utente);
-                $this->emailAttivazione($utente);
+               
+                // $this->emailAttivazione($utente);
                 $registrato=true;
             } else {
                 $this->_errore='Le password immesse non coincidono';
@@ -111,6 +113,7 @@ class CRegistrazione {
         }
      }
      
+     
      /**
      * Invia un email contenente il codice di attivazione per un utente appena registrato
      *
@@ -118,9 +121,10 @@ class CRegistrazione {
      * @param EUtente $utente
      * @return boolean
      */
-    public function emailAttivazione(EUtente $utente) {
+    /* public function emailAttivazione(EUtente $utente) {
         global $config;
         $view=USingleton::getInstance('VRegistrazione');
+        
         $view->setLayout('email_attivazione');
         $view->impostaDati('username',$utente->username);
         $view->impostaDati('nome_cognome',$utente->nome.' '.$utente->cognome);
@@ -130,21 +134,23 @@ class CRegistrazione {
         $corpo_email=$view->processaTemplate();
         $email=USingleton::getInstance('UEmail');
         return $email->invia_email($utente->email,$utente->nome.' '.$utente->cognome,'Attivazione account CarPooling',$corpo_email);
-    }
+          }
+         */
+         
     
     /**
      * Attiva un utente che inserisce un codice di attivazione valido oppure clicca sul link di autenticazione nell'email
      *
      * @return string
      */
-    public function attivazione() {
+    /* public function attivazione() {
         $view = USingleton::getInstance('VRegistrazione');
         $dati_attivazione=$view->getDatiAttivazione();
         $FUtente=new FUtente();
         $utente=$FUtente->load($dati_attivazione['username']);
         if ($dati_attivazione!=false) {
             if ($utente->getCodiceAttivazione()==$dati_attivazione['codice']) {
-                $utente->stato='attivo';
+                $utente->stato_attivazione='attivo';
                 $FUtente->update($utente);
                 $view->setLayout('conferma_attivazione');
             } else {
@@ -154,8 +160,10 @@ class CRegistrazione {
         } else {
             $view->setLayout('attivazione');
         }
-        return $view->processaTemplate();
-    }
+        return $view->processaTemplate(); 
+     * }
+     */
+    
     
     /**
      * Mostra il modulo di registrazione

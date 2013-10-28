@@ -15,12 +15,42 @@ class VRicerca extends View {
      */
     private $_layout='default';
     /**
-     * restituisce il numero della pagina (utilizzato nella visualizzazione dei libri) passato per GET o POST
-     * @return int
+     * restituisce la citta di partenza passata per GET o POST
+     * @return string
      */
-    public function getPage() {
-        if (isset($_REQUEST['page'])) {
-            return $_REQUEST['page'];
+    public function getCittaPartenza() {
+        if (isset($_REQUEST['citta_partenza'])) {
+            return $_REQUEST['citta_partenza'];
+        } else
+            return 0;
+    }
+    /**
+     * restituisce la citta di arrivo passata per GET o POST
+     * @return string
+     */
+    public function getCittaArrivo() {
+        if (isset($_REQUEST['citta_arrivo'])) {
+            return $_REQUEST['citta_arrivo'];
+        } else
+            return 0;
+    }
+    /**
+     * restituisce la data di partenza passata per GET o POST
+     * @return string
+     */
+    public function getDataPartenza() {
+        if (isset($_REQUEST['data_partenza'])) {
+            return $_REQUEST['data_partenza'];
+        } else
+            return 0;
+    }
+    /**
+     * restituisce il campo note passato per GET o POST
+     * @return string
+     */
+    public function getNote() {
+        if (isset($_REQUEST['note'])) {
+            return $_REQUEST['note'];
         } else
             return 0;
     }

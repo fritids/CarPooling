@@ -23,6 +23,7 @@
   <link rel="stylesheet" type="text/css" media="screen,projection,print" href="templates/main/template/css/layout3_text.css" />
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
   <title>CarPooling</title>
+  <script src="js/jquery-1.10.3.min.js"></script>
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
@@ -68,13 +69,13 @@
 	
           <!-- Navigation item -->
           <ul>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.php?controller=&task=" >Home</a></li>
           </ul>
 		  <ul>
             <li><a href="index.html">Cerca un passaggio</a></li>
           </ul>
 		  <ul>
-            <li><a href="index.html">Offri un passaggio</a></li>
+            <li><a href="index.php?controller=ricerca&task=inserimento">Offri un passaggio</a></li>
           </ul>
           <ul>
             <li>{if (!$registrato)}
@@ -83,8 +84,8 @@
                 {else}
                 <a href="#">Account</a>
                 <ul>
-                    <li><a href="?controller=registrazione&task=visualizza_profilo">Profilo</li>
-                    <li><a href="?controller=registrazione&task=gestisci_profilo">Gestisci</li>
+                    <li><a href="?controller=registrazione&task=visualizza_profilo">Profilo</a></li>
+                    <li><a href="?controller=registrazione&task=gestisci_profilo">Gestisci</a></li>
                 </ul>
                 {/if}
             </li>        

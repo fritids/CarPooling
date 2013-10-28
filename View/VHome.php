@@ -74,6 +74,7 @@ class VHome extends View {
         $this->assign('colonna_laterale','Benvenuto '.$username);
         $this->assign('corpo_centrale',$this->corpo_centrale);
         $this->assign('menu',$this->pulsante_menu);
+        $this->assign('registrato',true);
         $this->aggiungiTastoLogout();
         
     }
@@ -84,6 +85,7 @@ class VHome extends View {
         $this->assign('titolo_principale','');
         $this->assign('corpo_centrale',$this->corpo_centrale);
         $this->assign('menu',$this->pulsante_menu);
+        $this->assign('registrato',false);
         $this->aggiungiModuloLogin();
         $this->aggiungiTastoRegistrazione();
     }

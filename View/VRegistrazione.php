@@ -57,7 +57,7 @@ class VRegistrazione extends View {
      * @return array();
      */
     public function getDatiRegistrazione() {
-        $dati_richiesti=array('username','password','password_1','nome','cognome','citta_residenza','num_telefono','email');
+        $dati_richiesti=array('username','password','password_1','nome','cognome','data_nascita','citta_nascita','citta_residenza','email','cod_fiscale');
         $dati=array();
         foreach ($dati_richiesti as $dato) {
             if (isset($_REQUEST[$dato]))
