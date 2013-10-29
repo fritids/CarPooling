@@ -71,22 +71,24 @@ class VRicerca extends View {
     public function impostaDati($key,$valore) {
         $this->assign($key,$valore);
     }
-    /**
-     * Ritorna l'id del libro passato tramite GET o POST
-     *
-     * @return mixed
-     */
-    public function getIdLibro() {
-        if (isset($_REQUEST['id_libro'])) {
-            return $_REQUEST['id_libro'];
-        } else
-            return false;
-    }
+    
     /**
      * @param string $layout
      */
     public function setLayout($layout) {
         $this->_layout=$layout;
+    }
+    
+    
+    /**
+     * restituisce il numero della pagina (utilizzato nella visualizzazione dei libri) passato per GET o POST
+     * @return int
+     */
+    public function getPage() {
+        if (isset($_REQUEST['page'])) {
+            return $_REQUEST['page'];
+        } else
+            return 0;
     }
     /**
      * restituisce il voto passato tramite GET o POST

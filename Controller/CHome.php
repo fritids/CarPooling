@@ -32,7 +32,7 @@ class CHome {
                 return $CRicerca->smista();
             default:
                 $CRicerca=USingleton::getInstance('CRicerca');
-                return $CRicerca->index();
+                return $CRicerca->ultimiViaggi();
         }
     }
 
