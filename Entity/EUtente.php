@@ -7,11 +7,13 @@ class EUtente {
    public $data_nascita;
    public $citta_nascita;
    public $citta_residenza;
+   public $sesso;
    public $cod_fiscale;
    public $email;
    public $num_telefono;
    public $codice_attivazione;
    public $stato_attivazione;
+   public $immagine_profilo;
    
    public $_guidatore=array();
    public $_passeggero=array();
