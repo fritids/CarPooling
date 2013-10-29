@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generato il: Ott 29, 2013 alle 11:00
+-- Generato il: Ott 29, 2013 alle 12:13
 -- Versione del server: 5.5.27
 -- Versione PHP: 5.4.7
 
@@ -38,6 +38,16 @@ CREATE TABLE IF NOT EXISTS `guidatore` (
   KEY `targa` (`targa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- RELATIONS FOR TABLE `guidatore`:
+--   `username_guidatore`
+--       `utente` -> `username`
+--   `targa`
+--       `veicolo` -> `targa`
+--   `num_viaggio`
+--       `viaggio` -> `num_viaggio`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +65,14 @@ CREATE TABLE IF NOT EXISTS `passeggero` (
   PRIMARY KEY (`username_passeggero`,`num_viaggio`),
   KEY `num_viaggio` (`num_viaggio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- RELATIONS FOR TABLE `passeggero`:
+--   `username_passeggero`
+--       `utente` -> `username`
+--   `num_viaggio`
+--       `viaggio` -> `num_viaggio`
+--
 
 -- --------------------------------------------------------
 
@@ -108,6 +126,12 @@ CREATE TABLE IF NOT EXISTS `veicolo` (
   KEY `username_proprietario` (`username_proprietario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- RELATIONS FOR TABLE `veicolo`:
+--   `username_proprietario`
+--       `utente` -> `username`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -120,6 +144,8 @@ CREATE TABLE IF NOT EXISTS `viaggio` (
   `citta_partenza` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `data_partenza` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
   `citta_arrivo` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `costo` int(11) NOT NULL,
+  `posti_disponibili` int(11) NOT NULL,
   `note` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`num_viaggio`),
   UNIQUE KEY `num_viaggio` (`num_viaggio`)
@@ -129,36 +155,36 @@ CREATE TABLE IF NOT EXISTS `viaggio` (
 -- Dump dei dati per la tabella `viaggio`
 --
 
-INSERT INTO `viaggio` (`num_viaggio`, `citta_partenza`, `data_partenza`, `citta_arrivo`, `note`) VALUES
-(1, 'pescara', '2013-01-01', 'laquila', 'niente'),
-(2, 'pescara', '2013-01-01', 'roma', 'niente'),
-(3, 'madonna', '2013-01-01', 'gesu', 'dio'),
-(4, '1', '2013-01-01', '2', '0'),
-(5, 'per', '2013-01-01', 'la', 'madonna'),
-(6, '', '', '', ''),
-(7, '', '', '', ''),
-(8, '', '', '', ''),
-(9, '', '', '', ''),
-(10, '', '', '', ''),
-(11, '', '', '', ''),
-(12, '', '', '', ''),
-(13, '', '', '', ''),
-(14, '', '', '', ''),
-(15, '', '', '', ''),
-(16, '', '', '', ''),
-(17, '', '', '', ''),
-(18, 'qua', 'mo', 'la', 'bo'),
-(19, 'PARTENZA', 'DATA', 'ARRIVO', 'NIENTE'),
-(20, 'QE', 'QADFA', 'FA', 'FASD'),
-(21, 'adesso', 'esse', 'dovrebbe', '20'),
-(22, '1', '3', '2', '4'),
-(23, 'a', 'a', 'q', 'q'),
-(24, 'a', 'a', 'a', 'a'),
-(25, 'a', 'a', 'a', 'a'),
-(26, 'ad', 'fef', 'ad', 'fs'),
-(27, 'a', 'fw', 'dwq', 'fde'),
-(28, 'qd', 'fw', 'wedf', 'efw'),
-(29, 'porco', 'funziona', 'dio', '');
+INSERT INTO `viaggio` (`num_viaggio`, `citta_partenza`, `data_partenza`, `citta_arrivo`, `costo`, `posti_disponibili`, `note`) VALUES
+(1, 'pescara', '2013-01-01', 'laquila', 0, 0, 'niente'),
+(2, 'pescara', '2013-01-01', 'roma', 0, 0, 'niente'),
+(3, 'madonna', '2013-01-01', 'gesu', 0, 0, 'dio'),
+(4, '1', '2013-01-01', '2', 0, 0, '0'),
+(5, 'per', '2013-01-01', 'la', 0, 0, 'madonna'),
+(6, '', '', '', 0, 0, ''),
+(7, '', '', '', 0, 0, ''),
+(8, '', '', '', 0, 0, ''),
+(9, '', '', '', 0, 0, ''),
+(10, '', '', '', 0, 0, ''),
+(11, '', '', '', 0, 0, ''),
+(12, '', '', '', 0, 0, ''),
+(13, '', '', '', 0, 0, ''),
+(14, '', '', '', 0, 0, ''),
+(15, '', '', '', 0, 0, ''),
+(16, '', '', '', 0, 0, ''),
+(17, '', '', '', 0, 0, ''),
+(18, 'qua', 'mo', 'la', 0, 0, 'bo'),
+(19, 'PARTENZA', 'DATA', 'ARRIVO', 0, 0, 'NIENTE'),
+(20, 'QE', 'QADFA', 'FA', 0, 0, 'FASD'),
+(21, 'adesso', 'esse', 'dovrebbe', 0, 0, '20'),
+(22, '1', '3', '2', 0, 0, '4'),
+(23, 'a', 'a', 'q', 0, 0, 'q'),
+(24, 'a', 'a', 'a', 0, 0, 'a'),
+(25, 'a', 'a', 'a', 0, 0, 'a'),
+(26, 'ad', 'fef', 'ad', 0, 0, 'fs'),
+(27, 'a', 'fw', 'dwq', 0, 0, 'fde'),
+(28, 'qd', 'fw', 'wedf', 0, 0, 'efw'),
+(29, 'porco', 'funziona', 'dio', 0, 0, '');
 
 --
 -- Limiti per le tabelle scaricate
