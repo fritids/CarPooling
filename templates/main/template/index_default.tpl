@@ -86,7 +86,7 @@
           <!-- Navigation item -->
           <ul>
             <li><a href="index.php?controller=&task=" >Home</a></li>
-            <li><a href="index.html">Cerca un passaggio</a></li>
+            <li><a href="index.php?controller=ricerca&task=cerca">Cerca un passaggio</a></li>
             <li><a href="index.php?controller=ricerca&task=inserimento">Offri un passaggio</a></li>
             <li id="prova">{if (!$registrato)}
                 <a href="?controller=registrazione&task=registra">Registrati</a></li>

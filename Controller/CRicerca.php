@@ -28,8 +28,8 @@ class CRicerca {
             
         }
         $view->impostaDati('dati',$array_risultato);
+        $view->setLayout('default');
         return $view->processaTemplate();
-        
     }
     
     public function inserisciViaggio() {
@@ -77,7 +77,24 @@ class CRicerca {
         return $view->processaTemplate();
      }
      
+    public function ricercaViaggio() {
+            $view=USingleton::getInstance('VRicerca');
+            $view->setLayout('avanzata');
+            return $view->processaTemplate();
+    }
     
+    public function invioRicerca() {
+            $view=USingleton::getInstance('VRicerca');
+            $view->setLayout('elenco');
+            $this->_viaggi_per_pagina=4;
+            $citta_partenza=$view->getCittaPartenza();
+            $citta_arrivo=$view->getCittaArrivo();
+            $data_partenza=$view->getDataPartenza();
+            $FViaggio=new FViaggio();
+            $viaggi=$FViaggio->cercaViaggio($citta_partenza,$citta_arrivo,$data_partenza);
+            echo $viaggi[0]['citta_partenza'];  // Far visualizzare array su template
+            return $view->processaTemplate();
+    }
     /**
      * Smista le richieste ai vari metodi
      *
@@ -90,6 +107,10 @@ class CRicerca {
                 return $this->inserimentoViaggio();
             case 'inserisci':
                 return $this->inserisciViaggio();
+            case 'cerca':
+                return $this->ricercaViaggio();
+            case 'invio_ricerca':
+                return $this->invioRicerca();
         }
     }
 }
