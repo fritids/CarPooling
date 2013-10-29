@@ -17,7 +17,7 @@ $config['smarty']['cache_dir'] =
 
 $config['debug']=false;
 $config['mysql']['user'] = 'root';
-$config['mysql']['password'] = 'pippo';
+$config['mysql']['password'] = '0000';
 $config['mysql']['host'] = 'localhost';
 $config['mysql']['database'] = 'carpooling';
 

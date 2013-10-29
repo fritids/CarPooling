@@ -4,7 +4,7 @@
 
         <!-- Content unit - One column -->
         <div>
-		 <h1 class="block">Dati personali</h1>
+		<h1 class="block">Dati personali</h1>
         <div class="column1-unit">
           <div class="contactform">
             <form method="post" action="index.php">

@@ -17,9 +17,9 @@
                    <input type="text" name="citta_arrivo" id="citta_arrivo" class="field" value="" tabindex="2" /></p>
                 <p><label for="data_partenza" class="left">Data di partenza:</label>
                    <input type="text" name="data_partenza" id="data_partenza" class="field" value="" tabindex="3" /></p>
-                <p><label for="note" class="left">Note:</label>
-                   <input type="text" name="note" id="note" class="field" value="" tabindex="4" /></p>
-                <p><input type="submit" name="submit" id="submit" class="button" value="Conferma" tabindex="5" /></p>
+                 <p><label for="note" class="left">Note:</label>
+                   <textarea name="note" id="note" cols="45" rows="7" tabindex="4"></textarea></p>
+                <p><input type="submit" name="submit" id="submit" class="button" value="Inserisci" tabindex="5" /></p>
 		</fieldset>  
            </div>              
         </div>

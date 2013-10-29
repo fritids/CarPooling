@@ -191,11 +191,14 @@ class CRegistrazione {
         $username=$session->leggi_valore('username');
         $FUtente=new FUtente();
         $utente=$FUtente->load($username);
+		$img="templates/main/template/img/m_imgprofilo.jpg";   //CAMBIARE
+		$view->impostaDati('img_profilo',$img);
         $view->impostaDati('username',$utente->username);
         $view->impostaDati('nome',$utente->nome);
         $view->impostaDati('cognome',$utente->cognome);
         $view->impostaDati('data_nascita',$utente->data_nascita);
         $view->impostaDati('citta_residenza',$utente->citta_residenza);
+		$view->impostaDati('citta_nascita',$utente->citta_nascita);
         $view->impostaDati('email',$utente->email);
         return $view->processaTemplate();
         // 
