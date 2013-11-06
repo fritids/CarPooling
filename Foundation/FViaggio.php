@@ -16,11 +16,18 @@ class FViaggio extends FDatabase{
     }
     
     public function cercaViaggio($citta_partenza,$citta_arrivo,$data_partenza){
-        $query="SELECT `citta_partenza`,`citta_arrivo`,`data_partenza`,`costo`,`posti_disponibili` FROM `viaggio` WHERE `citta_partenza`='$citta_partenza' AND `citta_arrivo`='$citta_arrivo' AND `data_partenza`='$data_partenza'";
+        $query="SELECT `num_viaggio`,`citta_partenza`,`citta_arrivo`,`data_partenza`,`costo`,`posti_disponibili` FROM `viaggio` WHERE `citta_partenza`='$citta_partenza' AND `citta_arrivo`='$citta_arrivo' AND `data_partenza`='$data_partenza'";
         $this->query($query);
         $array=$this->getResultAssoc();
         return $array;
         }
+        
+    public function ultimiViaggi(){
+        $query="SELECT `num_viaggio`,`citta_partenza`,`citta_arrivo`,`data_partenza`,`costo`,`posti_disponibili` FROM `viaggio` ORDER BY `num_viaggio` desc LIMIT 4";
+        $this->query($query);
+        $array=$this->getResultAssoc();
+        return $array;
+    }
 }
 
 ?>

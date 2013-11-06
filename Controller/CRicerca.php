@@ -15,7 +15,7 @@ class CRicerca {
    
     public function ultimiViaggi(){
         $view=USingleton::getInstance('VRicerca');
-        $this->_viaggi_per_pagina=4;
+       /* $this->_viaggi_per_pagina=4;
         $FViaggio=new FViaggio();
         $limit=4;
         $risultato=$FViaggio->search(array(), '`num_viaggio`', $limit);
@@ -29,6 +29,10 @@ class CRicerca {
         }
         $view->impostaDati('dati',$array_risultato);
         $view->setLayout('default');
+        return $view->processaTemplate(); */
+        $FViaggio=new FViaggio();
+        $viaggi=$FViaggio->ultimiViaggi();
+        $view->mostraListaUltimiViaggi($viaggi);
         return $view->processaTemplate();
     }
     
@@ -45,7 +49,7 @@ class CRicerca {
             $FViaggio=new FViaggio();
             $FViaggio->store($EViaggio);
             $num_viaggio=$FViaggio->getUltimoNumViaggio();
-            return $this->riepilogoViaggio($num_viaggio);
+            $this->riepilogoViaggio($num_viaggio);
         }
     }
     
@@ -59,7 +63,7 @@ class CRicerca {
             $view->impostaDati('data_partenza',$viaggio->data_partenza);
             $view->impostaDati('note',$viaggio->note);
             $view->setLayout('riepilogo');
-            return $view->processaTemplate();
+            return $view->processaTemplateParziale();
             
      }
      
@@ -74,13 +78,14 @@ class CRicerca {
             $view=USingleton::getInstance('VRicerca');
             $view->setLayout('errore');
         }
-        return $view->processaTemplate();
+        return $view->processaTemplateParziale();
      }
      
     public function ricercaViaggio() {
             $view=USingleton::getInstance('VRicerca');
             $view->setLayout('avanzata');
-            return $view->processaTemplate();
+            $view->processaTemplateParziale();
+           
     }
     
     public function invioRicerca() {
@@ -92,8 +97,8 @@ class CRicerca {
             $data_partenza=$view->getDataPartenza();
             $FViaggio=new FViaggio();
             $viaggi=$FViaggio->cercaViaggio($citta_partenza,$citta_arrivo,$data_partenza);
-            echo $viaggi[0]['citta_partenza'];  // Far visualizzare array su template
-            return $view->processaTemplate();
+            $view->mostraListaViaggi($viaggi);
+            
     }
     /**
      * Smista le richieste ai vari metodi
@@ -111,6 +116,8 @@ class CRicerca {
                 return $this->ricercaViaggio();
             case 'invio_ricerca':
                 return $this->invioRicerca();
+            case 'riepilogo_viaggio':
+                return $this->riepilogoViaggio($view->getNumViaggio());
         }
     }
 }

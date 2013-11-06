@@ -40,6 +40,7 @@
       
       {/literal}
   </script>
+  <script src="js/index.js"></script>
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
@@ -78,6 +79,7 @@
        
       
       <!-- A.3 HEADER BOTTOM -->
+      
       <div class="header-bottom">
       
         <!-- Navigation Level 2 (Drop-down menus) -->
@@ -86,8 +88,8 @@
           <!-- Navigation item -->
           <ul>
             <li><a href="index.php?controller=&task=" >Home</a></li>
-            <li><a href="index.php?controller=ricerca&task=cerca">Cerca un passaggio</a></li>
-            <li><a href="index.php?controller=ricerca&task=inserimento">Offri un passaggio</a></li>
+            <li><a id="cerca" class="pulsante">Cerca un passaggio</a></li>
+            <li><a id="offri" class="pulsante">Offri un passaggio</a></li>
             <li id="prova">{if (!$registrato)}
                 <a href="?controller=registrazione&task=registra">Registrati</a></li>
                 {else}
@@ -103,6 +105,7 @@
           
         </div>
 	  </div>
+          
 
       <!-- A.4 HEADER BREADCRUMBS -->
 
@@ -115,9 +118,21 @@
     <div class="main">
   
       <!-- B.1 MAIN CONTENT -->
-      <div class="main-content">
+      <div class="main-content" >
+          
+          <div id="pagina_parziale">
+          
+              {$corpo_centrale}
+          
+          </div>
+          
+      </div>
+          
+          
+              
+          
+          
         
-        {$corpo_centrale}
           
         <!-- Content unit - Two columns -->
        
@@ -127,16 +142,20 @@
         <!-- Content unit - Three columns -->
         
        
-      </div>
+      
 	  <!-- fine main content -->
 
       <!-- B.2 MAIN NAVIGATION -->
       <div class="main-navigation">
 
         <!-- Login -->
+        {if ($registrato)}
+         <h3>{$colonna_laterale}</h3>
+         {$menu_laterale}
+         {else}
         {$colonna_laterale}
-        
-</div>
+        {/if}
+      </div>
        
 
         

@@ -8,6 +8,12 @@ class CHome {
         $registrato=$CRegistrazione->getUtenteRegistrato();
         $VHome= USingleton::getInstance('VHome');
         $contenuto=$this->smista();
+        // distinguo se la richiesta è di un'intera pagina, oppure una richiesta ajax
+        if ($contenuto == NULL)
+        {
+            // se è una ajax, allora la sua view ha già fatto il lavoro, quindi esco
+            return;
+        }
         $VHome->impostaContenuto($contenuto);
         if ($registrato) {
             $VHome->impostaPaginaRegistrato();

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-10-23 18:04:16
+<?php /* Smarty version 2.6.26, created on 2013-10-29 17:29:13
          compiled from registrazione_modulo.tpl */ ?>
 <!-- REGISTRAZIONE -->
 		<br>
@@ -6,7 +6,7 @@
 
         <!-- Content unit - One column -->
         <div>
-		 <h1 class="block">Dati personali</h1>
+		<h1 class="block">Dati personali</h1>
         <div class="column1-unit">
           <div class="contactform">
             <form method="post" action="index.php">

@@ -1,15 +1,23 @@
-<?php /* Smarty version 2.6.26, created on 2013-10-24 17:37:23
+<?php /* Smarty version 2.6.26, created on 2013-11-06 17:43:49
          compiled from ricerca_riepilogo.tpl */ ?>
-<!-- INSERIMENTO VIAGGIO -->
 		<br>
-        <h1 class="pagetitle">Inserimento nuovo viaggio</h1>
+        <h1 class="pagetitle">Dati viaggio</h1>
 
         <!-- Content unit - One column -->
-        <div>
-		 <h1 class="block">Dati viaggio</h1>
+<div> 
+        <h1 class="block"></h1>
         <div class="column1-unit">
           <div class="contactform">
-            template di riepilogo viaggio
-           </div>              
+            <?php echo $this->_tpl_vars['num_viaggio']; ?>
+<br>
+            <?php echo $this->_tpl_vars['citta_partenza']; ?>
+<br>
+            <?php echo $this->_tpl_vars['citta_arrivo']; ?>
+<br>
+            <?php echo $this->_tpl_vars['data_partenza']; ?>
+<br>
+            <?php echo $this->_tpl_vars['note']; ?>
+<br>
+          </div>              
         </div>
 </div>

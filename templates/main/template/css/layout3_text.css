@@ -15,6 +15,7 @@
 /******************/
 
 /* MAIN NAVIGATION */
+.pulsante:hover{cursor:pointer}
 .main-navigation .round-border-topright {width:10px; height:10px; position:absolute; z-index:100; margin:0 0 0 190px; background:url(../img/bg_corner_topright.gif) no-repeat;}
 
 .nav3-grid {width:199px; border-bottom:solid 1px rgb(200,200,200);}

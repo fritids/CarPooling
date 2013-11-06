@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2013-10-29 11:56:59
+<?php /* Smarty version 2.6.26, created on 2013-11-06 12:24:10
          compiled from ricerca_inserisci.tpl */ ?>
 <!-- INSERIMENTO VIAGGIO -->
+<script src="js/index.js"></script>
 		<br>
         <h1 class="pagetitle">Inserimento nuovo viaggio</h1>
 
@@ -9,7 +10,7 @@
 		 <h1 class="block">Dati viaggio</h1>
         <div class="column1-unit">
           <div class="contactform">
-            <form method="post" action="index.php">
+            <form>
                 <p><input type="hidden" name="controller" value="ricerca" /></p>
                 <p><input type="hidden" name="task" value="inserisci" /></p>
                 <fieldset>
@@ -21,8 +22,9 @@
                    <input type="text" name="data_partenza" id="data_partenza" class="field" value="" tabindex="3" /></p>
                  <p><label for="note" class="left">Note:</label>
                    <textarea name="note" id="note" cols="45" rows="7" tabindex="4"></textarea></p>
-                <p><input type="submit" name="submit" id="submit" class="button" value="Inserisci" tabindex="5" /></p>
-		</fieldset>  
+                <p><input type="button" id="submit_offri" class="button" value="Inserisci" tabindex="5" /></p>
+		</fieldset> 
+            </form>   
            </div>              
         </div>
 </div>

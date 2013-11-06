@@ -44,6 +44,13 @@ class VRegistrazione extends View {
         else
             return false;
     }
+    
+    public function getNumViaggio() {
+        if (isset($_REQUEST['num_viaggio']))
+            return $_REQUEST['num_viaggio'];
+        else
+            return false;
+    }
     /**
      * @return string
      */

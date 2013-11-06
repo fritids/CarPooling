@@ -3,6 +3,7 @@ class CRegistrazione {
     private $_username=null;
     private $_password=null;
     private $_errore='';
+    private $_autenticato=false;
     
     public function getUtenteRegistrato() {
         $autenticato=false;
@@ -47,6 +48,7 @@ class CRegistrazione {
                     $session=USingleton::getInstance('USession');
                     $session->imposta_valore('username',$username);
                     $session->imposta_valore('nome_cognome',$utente->nome.' '.$utente->cognome);
+                    $this->_autenticato=true;
                     return true;
                 } else {
                     $this->_errore='Username o password errati';
@@ -182,6 +184,9 @@ class CRegistrazione {
         $session=USingleton::getInstance('USession');
         $session->cancella_valore('username');
         $session->cancella_valore('nome_cognome');
+        $view=USingleton::getInstance('VRicerca');
+        $view->setLayout('default');
+        return $view->processaTemplate(); 
     }
     
     public function visualizzaProfilo() {
@@ -201,9 +206,20 @@ class CRegistrazione {
 		$view->impostaDati('citta_nascita',$utente->citta_nascita);
         $view->impostaDati('email',$utente->email);
         return $view->processaTemplate();
-        // 
+        
     }
     
+    public function confermaLogin() {
+        if ($this->_autenticato) { 
+            $view=USingleton::getInstance('VRicerca');
+            $view->setLayout('default');
+            return $view->processaTemplate(); }
+        else {
+            $view=USingleton::getInstance('VRegistrazione');
+            $view->setLayout('problemi');
+            return $view->processaTemplate();
+        }
+    }    
      /**
      * Smista le richieste ai relativi metodi della classe
      * 
@@ -219,7 +235,11 @@ class CRegistrazione {
             case 'attivazione':
                 return $this->attivazione();
             case 'visualizza_profilo':
-                return $this->visualizzaProfilo();  // Ritorna stringa ad esempio registrazione_visualizzaprofilo.tpl
+                return $this->visualizzaProfilo();  
+            case 'autentica':
+                return $this->confermaLogin();
+            case 'esci':
+                return $this->logout();
         }
     }
 }

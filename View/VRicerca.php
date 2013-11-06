@@ -62,7 +62,12 @@ class VRicerca extends View {
     public function processaTemplate() {
         return $this->fetch('ricerca_'.$this->_layout.'.tpl');
     }
-    /**
+    
+    public function processaTemplateParziale() {
+        $this->display('ricerca_'.$this->_layout.'.tpl');
+    }
+
+        /**
      * Imposta i dati nel template identificati da una chiave ed il relativo valore
      *
      * @param string $key
@@ -77,6 +82,16 @@ class VRicerca extends View {
      */
     public function setLayout($layout) {
         $this->_layout=$layout;
+    }
+    
+    public function mostraListaViaggi($viaggi){
+        $this->assign('viaggi', $viaggi);
+        $this->display('ricerca_elenco.tpl');
+    }
+    
+    public function mostraListaUltimiViaggi($viaggi){
+        $this->assign('viaggi', $viaggi);
+        $this->setLayout('ultimi');
     }
     
     
@@ -101,39 +116,7 @@ class VRicerca extends View {
         } else
             return false;
     }
-    /**
-     * Restituisce il commento
-     *
-     * @return mixed
-     */
-    public function getCommento() {
-        if (isset($_REQUEST['commento'])) {
-            return $_REQUEST['commento'];
-        } else
-            return false;
-    }
-    /**
-     * Restituisce categoria
-     *
-     * @return mixed
-     */
-    public function getCategoria() {
-        if (isset($_REQUEST['categoria']))
-            return $_REQUEST['categoria'];
-        else
-            return false;
-    }
-    /**
-     * restituisce la stringa di ricerca
-     *
-     * @return mixed
-     */
-    public function getParola() {
-        if (isset($_REQUEST['stringa']))
-            return $_REQUEST['stringa'];
-        else
-            return false;
-    }
+    
 }
 
 ?>

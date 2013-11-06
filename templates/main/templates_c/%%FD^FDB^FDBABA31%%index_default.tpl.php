@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-10-28 17:20:16
+<?php /* Smarty version 2.6.26, created on 2013-11-06 16:45:53
          compiled from index_default.tpl */ ?>
 <html>
 
@@ -25,7 +25,25 @@
   <link rel="stylesheet" type="text/css" media="screen,projection,print" href="templates/main/template/css/layout3_text.css" />
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
   <title>CarPooling</title>
-  <script src="js/jquery-1.10.3.min.js"></script>
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script  type="text/javascript">
+      <?php echo '
+      $(initmenu);
+      function initmenu(){
+          $("#prova").hover(slidedown,slideup);
+      }
+      function slidedown(){
+          $("ul#menu_profilo").slideDown("medium");
+      } 
+      function slideup(){
+          $("ul#menu_profilo").slideUp("fast");
+      }    
+      
+      '; ?>
+
+  </script>
+  <script src="js/index.js"></script>
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
@@ -64,6 +82,7 @@
        
       
       <!-- A.3 HEADER BOTTOM -->
+      
       <div class="header-bottom">
       
         <!-- Navigation Level 2 (Drop-down menus) -->
@@ -72,32 +91,24 @@
           <!-- Navigation item -->
           <ul>
             <li><a href="index.php?controller=&task=" >Home</a></li>
-          </ul>
-		  <ul>
-            <li><a href="index.html">Cerca un passaggio</a></li>
-          </ul>
-		  <ul>
-            <li><a href="index.php?controller=ricerca&task=inserimento">Offri un passaggio</a></li>
-          </ul>
-          <ul>
-            <li><?php if (( ! $this->_tpl_vars['registrato'] )): ?>
-                <a href="?controller=registrazione&task=registra">Registrati</a>
-                <?php echo $this->_tpl_vars['errore']; ?>
-
+            <li><a id="cerca" class="pulsante">Cerca un passaggio</a></li>
+            <li><a id="offri" class="pulsante">Offri un passaggio</a></li>
+            <li id="prova"><?php if (( ! $this->_tpl_vars['registrato'] )): ?>
+                <a href="?controller=registrazione&task=registra">Registrati</a></li>
                 <?php else: ?>
-                <a href="#">Account</a>
-                <ul>
+            <a href="#">Account</a>
+                 <ul id="menu_profilo">
                     <li><a href="?controller=registrazione&task=visualizza_profilo">Profilo</a></li>
                     <li><a href="?controller=registrazione&task=gestisci_profilo">Gestisci</a></li>
-                </ul>
-                <?php endif; ?>
-            </li>        
+                 </ul>   
+                <?php endif; ?>      
           </ul>          
 
           <!-- Navigation item -->
           
         </div>
 	  </div>
+          
 
       <!-- A.4 HEADER BREADCRUMBS -->
 
@@ -110,10 +121,22 @@
     <div class="main">
   
       <!-- B.1 MAIN CONTENT -->
-      <div class="main-content">
-        
-        <?php echo $this->_tpl_vars['corpo_centrale']; ?>
+      <div class="main-content" >
+          
+          <div id="pagina_parziale">
+          
+              <?php echo $this->_tpl_vars['corpo_centrale']; ?>
 
+          
+          </div>
+          
+      </div>
+          
+          
+              
+          
+          
+        
           
         <!-- Content unit - Two columns -->
        
@@ -123,17 +146,23 @@
         <!-- Content unit - Three columns -->
         
        
-      </div>
+      
 	  <!-- fine main content -->
 
       <!-- B.2 MAIN NAVIGATION -->
       <div class="main-navigation">
 
         <!-- Login -->
+        <?php if (( $this->_tpl_vars['registrato'] )): ?>
+         <h3><?php echo $this->_tpl_vars['colonna_laterale']; ?>
+</h3>
+         <?php echo $this->_tpl_vars['menu_laterale']; ?>
+
+         <?php else: ?>
         <?php echo $this->_tpl_vars['colonna_laterale']; ?>
 
-        
-</div>
+        <?php endif; ?>
+      </div>
        
 
         

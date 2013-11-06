@@ -25,7 +25,7 @@ class VHome extends View {
     /**
      * @var array $_side_button
      */
-    private $menu_laterale=array();
+    private $menu_laterale;
     /**
      * @var string $_layout
      */
@@ -48,6 +48,14 @@ class VHome extends View {
         $this->assign('menu_laterale',$this->menu_laterale);
         $this->display('index_'.$this->_layout.'.tpl');
     }
+    
+    public function mostraPaginaParziale($template)
+    {
+        $this->display($template);
+    }
+
+    
+
     /**
      * imposta il contenuto principale alla variabile privata della classe
      */
@@ -71,9 +79,9 @@ class VHome extends View {
     public function impostaPaginaRegistrato() {
         $session=USingleton::getInstance('USession');
         $username=$session->leggi_valore('username');
-        $this->assign('colonna_laterale','Benvenuto '.$username);
+        $this->colonna_laterale.="Benvenuto $username";
         $this->assign('corpo_centrale',$this->corpo_centrale);
-        $this->assign('menu',$this->pulsante_menu);
+        //$this->assign('menu',$this->pulsante_menu);
         $this->assign('registrato',true);
         $this->aggiungiTastoLogout();
         
@@ -84,39 +92,31 @@ class VHome extends View {
     public function impostaPaginaVisitatore() {
         $this->assign('titolo_principale','');
         $this->assign('corpo_centrale',$this->corpo_centrale);
-        $this->assign('menu',$this->pulsante_menu);
+        //$this->assign('menu',$this->pulsante_menu);
         $this->assign('registrato',false);
         $this->aggiungiModuloLogin();
-        $this->aggiungiTastoRegistrazione();
+        //$this->aggiungiTastoRegistrazione();
     }
     /**
      * aggiunge il tasto logout al menu laterale
      */
     public function aggiungiTastoLogout() {
-        $tasto_logout=array();
-        $tasto_logout[]=array('testo' => 'Logout', 'link' => '?controller=registrazione&task=esci');
-        $this->menu_laterale=array_merge($tasto_logout,$this->menu_laterale);
+    /*    $tasto_logout=array();
+        $tasto_logout[]=array('testo' => 'Logout', 'link' => '?controller=registrazione&task=esci'); */
+        $VRegistrazione=USingleton::getInstance('VRegistrazione');
+        $VRegistrazione->setLayout('logout');
+        $tasto_logout=$VRegistrazione->processaTemplate();
+        $this->menu_laterale.=$tasto_logout;
     }
     /**
      * aggiunge il tasto per la registrazione nel menu laterale (per gli utenti non autenticati)
      */
-    public function aggiungiTastoRegistrazione() {
+    /*public function aggiungiTastoRegistrazione() {
         $menu_registrazione=array();
         $menu_registrazione[]=array('testo' => 'Attivati', 'link' => '?controller=registrazione&task=attivazione');
         $this->menu_laterale[]=array_merge(array('testo' => 'Registrati', 'link' => '?controller=registrazione&task=registra', 'submenu' => $menu_registrazione),$this->menu_laterale);
-    }
-    /**
-     * imposta i tasti per le categorie nel menu principale
-     */
- /*   public function impostaTastiCategorie($categorie){
-        $sotto_tasti=array();
-        $tasti=array();
-        foreach ($categorie as $categoria){
-            $sotto_tasti[]=array('testo' => $categoria['categoria'], 'link' => '?controller=ricerca&task=lista&categoria='.$categoria['categoria']);
-        }
-        $tasti[]=array('testo' => 'Categorie', 'link' => '#', 'submenu' => $sotto_tasti);
-        $this->pulsante_menu=$tasti;
     }*/
+    
 }
 
 ?>
