@@ -1,10 +1,10 @@
-<?php /* Smarty version 2.6.26, created on 2013-11-06 17:39:45
+<?php /* Smarty version 2.6.26, created on 2013-11-07 16:25:26
          compiled from ricerca_ultimi.tpl */ ?>
 		<br>
         <h1 class="pagetitle">Elenco Viaggi</h1>
 
         <!-- Content unit - One column -->
-		 <h1 class="block">Dati viaggi</h1>
+		
          <script src="js/index.js"></script>         
         <div class="column1-unit">
           <div class="contactform" >

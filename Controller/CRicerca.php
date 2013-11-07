@@ -15,21 +15,6 @@ class CRicerca {
    
     public function ultimiViaggi(){
         $view=USingleton::getInstance('VRicerca');
-       /* $this->_viaggi_per_pagina=4;
-        $FViaggio=new FViaggio();
-        $limit=4;
-        $risultato=$FViaggio->search(array(), '`num_viaggio`', $limit);
-        if ($risultato!=false) {
-            $array_risultato=array();
-            foreach ($risultato as $dato) {
-                $viaggio=$FViaggio->load($dato->num_viaggio);
-                $array_risultato[]=array_push($array_risultato, $viaggio);
-            }
-            
-        }
-        $view->impostaDati('dati',$array_risultato);
-        $view->setLayout('default');
-        return $view->processaTemplate(); */
         $FViaggio=new FViaggio();
         $viaggi=$FViaggio->ultimiViaggi();
         $view->mostraListaUltimiViaggi($viaggi);

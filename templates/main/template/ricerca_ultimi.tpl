@@ -2,7 +2,7 @@
         <h1 class="pagetitle">Elenco Viaggi</h1>
 
         <!-- Content unit - One column -->
-		 <h1 class="block">Dati viaggi</h1>
+		
          <script src="js/index.js"></script>         
         <div class="column1-unit">
           <div class="contactform" >

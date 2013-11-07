@@ -115,57 +115,6 @@ class CRegistrazione {
         }
      }
      
-     
-     /**
-     * Invia un email contenente il codice di attivazione per un utente appena registrato
-     *
-     * @global array $config
-     * @param EUtente $utente
-     * @return boolean
-     */
-    /* public function emailAttivazione(EUtente $utente) {
-        global $config;
-        $view=USingleton::getInstance('VRegistrazione');
-        
-        $view->setLayout('email_attivazione');
-        $view->impostaDati('username',$utente->username);
-        $view->impostaDati('nome_cognome',$utente->nome.' '.$utente->cognome);
-        $view->impostaDati('codice_attivazione',$utente->getCodiceAttivazione());
-        $view->impostaDati('email_webmaster',$config['email_webmaster']);
-        $view->impostaDati('url',$config['url_CarPooling']);
-        $corpo_email=$view->processaTemplate();
-        $email=USingleton::getInstance('UEmail');
-        return $email->invia_email($utente->email,$utente->nome.' '.$utente->cognome,'Attivazione account CarPooling',$corpo_email);
-          }
-         */
-         
-    
-    /**
-     * Attiva un utente che inserisce un codice di attivazione valido oppure clicca sul link di autenticazione nell'email
-     *
-     * @return string
-     */
-    /* public function attivazione() {
-        $view = USingleton::getInstance('VRegistrazione');
-        $dati_attivazione=$view->getDatiAttivazione();
-        $FUtente=new FUtente();
-        $utente=$FUtente->load($dati_attivazione['username']);
-        if ($dati_attivazione!=false) {
-            if ($utente->getCodiceAttivazione()==$dati_attivazione['codice']) {
-                $utente->stato_attivazione='attivo';
-                $FUtente->update($utente);
-                $view->setLayout('conferma_attivazione');
-            } else {
-                $view->impostaErrore('Il codice di attivazione &egrave; errato');
-                $view->setLayout('problemi');
-            }
-        } else {
-            $view->setLayout('attivazione');
-        }
-        return $view->processaTemplate(); 
-     * }
-     */
-    
     
     /**
      * Mostra il modulo di registrazione
@@ -185,7 +134,7 @@ class CRegistrazione {
         $session->cancella_valore('username');
         $session->cancella_valore('nome_cognome');
         $view=USingleton::getInstance('VRicerca');
-        $view->setLayout('default');
+        $view->setLayout('ultimi');
         return $view->processaTemplate(); 
     }
     
@@ -211,9 +160,8 @@ class CRegistrazione {
     
     public function confermaLogin() {
         if ($this->_autenticato) { 
-            $view=USingleton::getInstance('VRicerca');
-            $view->setLayout('default');
-            return $view->processaTemplate(); }
+            $controller=USingleton::getInstance('CRicerca');
+            return $controller->ultimiViaggi(); }
         else {
             $view=USingleton::getInstance('VRegistrazione');
             $view->setLayout('problemi');
