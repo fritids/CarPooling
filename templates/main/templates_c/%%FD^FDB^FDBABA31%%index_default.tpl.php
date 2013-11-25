@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-11-06 16:45:53
+<?php /* Smarty version 2.6.26, created on 2013-11-20 12:02:28
          compiled from index_default.tpl */ ?>
 <html>
 
@@ -62,7 +62,7 @@
       <div class="header-top">
         
         <!-- Sitelogo and sitename -->
-        <a class="sitelogo" href="#" title="Go to Start page"></a>
+		<a class="sitelogo" href="index.php"></a>
         <div class="sitename">
           <h1>Car&bull;Pooling</a></h1>
         </div>
@@ -98,8 +98,9 @@
                 <?php else: ?>
             <a href="#">Account</a>
                  <ul id="menu_profilo">
-                    <li><a href="?controller=registrazione&task=visualizza_profilo">Profilo</a></li>
-                    <li><a href="?controller=registrazione&task=gestisci_profilo">Gestisci</a></li>
+                    <li><a id="visualizza" class="pulsante">Profilo</a></li>
+                    <li><a id="gestisci" class="pulsante">Gestisci</a></li>
+                    <li><a id="gestisci_viaggi_personali" class="pulsante">I miei viaggi</a></li>
                  </ul>   
                 <?php endif; ?>      
           </ul>          

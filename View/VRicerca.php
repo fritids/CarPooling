@@ -24,6 +24,20 @@ class VRicerca extends View {
         } else
             return 0;
     }
+    
+    public function getDa() {
+        if (isset($_REQUEST['da']))
+            return $_REQUEST['da'];
+        else
+            return false;
+    }
+    
+     public function getUsernamePasseggero() {
+        if (isset($_REQUEST['username_passeggero']))
+            return $_REQUEST['username_passeggero'];
+        else
+            return false;
+    }
     /**
      * restituisce la citta di arrivo passata per GET o POST
      * @return string
@@ -44,6 +58,8 @@ class VRicerca extends View {
         } else
             return 0;
     }
+    
+    
     /**
      * restituisce il campo note passato per GET o POST
      * @return string
@@ -51,6 +67,55 @@ class VRicerca extends View {
     public function getNote() {
         if (isset($_REQUEST['note'])) {
             return $_REQUEST['note'];
+        } else
+            return 0;
+    }
+    
+     public function getTarga() {
+        if (isset($_REQUEST['targa'])) {
+            return $_REQUEST['targa'];
+        } else
+            return 0;
+    }
+   
+    public function getTipo() {
+        if (isset($_REQUEST['tipo'])) {
+            return $_REQUEST['tipo'];
+        } else
+            return 0;
+    }
+    
+    public function getNumPosti() {
+        if (isset($_REQUEST['num_posti'])) {
+            return $_REQUEST['num_posti'];
+        } else
+            return 0;
+    }
+    
+    public function getCarburante() {
+        if (isset($_REQUEST['carburante'])) {
+            return $_REQUEST['carburante'];
+        } else
+            return 0;
+    }
+    
+    public function getConsumoMedio() {
+        if (isset($_REQUEST['consumo_medio'])) {
+            return $_REQUEST['consumo_medio'];
+        } else
+            return 0;
+    }
+    
+     public function getValutazione() {
+        if (isset($_REQUEST['valutazione'])) {
+            return $_REQUEST['valutazione'];
+        } else
+            return 0;
+    }
+    
+     public function getCommento() {
+        if (isset($_REQUEST['commento'])) {
+            return $_REQUEST['commento'];
         } else
             return 0;
     }

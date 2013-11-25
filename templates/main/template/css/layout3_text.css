@@ -41,8 +41,8 @@
 .main-navigation .loginform label.right {float:left; width:125px; margin:5px 0 0 0; padding:0 0 0 3px; /*IE6*/; font-size:110%;}
 .main-navigation .loginform input.field {width:158px; margin:0 0 5px 0; padding:0.1em 0 0.2em 0 !important /*Non-IE6*/; padding:0.2em 0 0.3em 0 /*IE6*/; border:solid 2px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
 .main-navigation .loginform input.checkbox {float:left; margin:5px 0 0 0 !important /*Non-IE6*/; margin:2px 0 0 -3px /*IE6*/; border:none;}
-.main-navigation .loginform input.button {float:left; width:5.0em; margin:10px 0 5px 0; padding:1px; background:rgb(230,230,230); border:solid 1px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:110%;}
-.main-navigation .loginform input.button:hover {cursor:pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+.main-navigation .loginform input.button {float:left; width:5.0em; border:solid 1px rgb(80,80,80); margin:10px 0 5px 0; padding:1px; background:rgb(220,220,220); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(80,80,80); font-size:110%;}
+.main-navigation .loginform input.button:hover {cursor:pointer; border:solid 1px rgb(150,150,150); background:rgb(230,230,230); color:rgb(150,150,150);}
 
 .main-navigation .searchform {width:160px; margin:0 20px 0 20px;}
 .main-navigation .searchform fieldset {border:none;}
@@ -74,7 +74,7 @@
 .main-content h3.side {clear:none;}
 
 .main-content h4 {margin:1.5em 0 1.0em 0; color:rgb(80,80,80); font-family:"trebuchet ms",arial,sans-serif; font-weight:normal; font-size:170%;}
-.main-content h5 {margin:1.5em 0 1.0em 0; color:rgb(80,80,80); font-family:"trebuchet ms",arial,sans-serif; font-size:140%;}
+.main-content h5 {margin:1.5em 0 1.0em 0; color:rgb(60,60,60); font-family:"trebuchet ms",arial,sans-serif; font-size:140%;}
 .main-content h6 {margin:1.2em 0 0.2em 0; color:rgb(80,80,80); font-weight:bold; font-size:120%;}
 .main-content p {margin:0 0 1.0em 0; line-height:1.5em; font-size:120%;}
 .main-content p.center {text-align:center;}
@@ -100,8 +100,8 @@ p.caption {clear:both; margin:0.5em 0 2.0em 20px; text-align:left; color:rgb(80,
 .contactform select.combo {width:175px; padding:2px; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
 .contactform input.field {width:230px; padding:2px; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%;}
 .contactform textarea {width:230px; padding:2px; border:solid 1px rgb(200,200,200); font-family:verdana,arial,sans-serif; font-size:110%; resize:none;}
-.contactform input.button {float:right; width:9.0em;margin-right:143px; padding:2px !important /*Non-IE6*/; padding:1 /*IE6*/; background:rgb(230,230,230); border:solid 2px rgb(150,150,150); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(150,150,150); font-size:110%;}
-.contactform input.button:hover {cursor: pointer; border:solid 1px rgb(80,80,80); background:rgb(220,220,220); color:rgb(80,80,80);}
+.contactform input.button {float:right; width:9.0em;margin-right:143px; padding:2px !important /*Non-IE6*/; padding:1 /*IE6*/; background:rgb(220,220,220); border:solid 1px rgb(80,80,80); text-align:center; font-family:verdana,arial,sans-serif; color:rgb(80,80,80); font-size:110%;}
+.contactform input.button:hover {cursor: pointer; border:solid 1px rgb(80,80,80); background:rgb(230,230,230); color:rgb(150,150,150);}
 
 /********************/
 /*  COMMON CLASSES  */

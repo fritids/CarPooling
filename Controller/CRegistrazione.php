@@ -133,28 +133,58 @@ class CRegistrazione {
         $session=USingleton::getInstance('USession');
         $session->cancella_valore('username');
         $session->cancella_valore('nome_cognome');
-        $view=USingleton::getInstance('VRicerca');
-        $view->setLayout('ultimi');
-        return $view->processaTemplate(); 
+        $view=USingleton::getInstance('CRicerca');
+        return $view->ultimiViaggi(); 
     }
     
     public function visualizzaProfilo() {
-        $view=Usingleton::getInstance('VRegistrazione');
-        $view->setLayout('visualizza_profilo');
         $session = USingleton::getInstance('USession');
         $username=$session->leggi_valore('username');
+        $view=Usingleton::getInstance('VRegistrazione');
+        $view->setLayout('visualizza_profilo');
         $FUtente=new FUtente();
         $utente=$FUtente->load($username);
-		$img="templates/main/template/img/m_imgprofilo.jpg";   //CAMBIARE
-		$view->impostaDati('img_profilo',$img);
+	$view->impostaDati('immagine_profilo',$utente->immagine_profilo);
         $view->impostaDati('username',$utente->username);
         $view->impostaDati('nome',$utente->nome);
         $view->impostaDati('cognome',$utente->cognome);
         $view->impostaDati('data_nascita',$utente->data_nascita);
         $view->impostaDati('citta_residenza',$utente->citta_residenza);
-		$view->impostaDati('citta_nascita',$utente->citta_nascita);
+	$view->impostaDati('citta_nascita',$utente->citta_nascita);
         $view->impostaDati('email',$utente->email);
-        return $view->processaTemplate();
+        return $view->processaTemplateParziale();
+        
+    }
+    
+    public function visualizzaUtente($username){
+        $view=Usingleton::getInstance('VRegistrazione');
+        $view->setLayout('visualizza_profilo_utente');
+        $FUtente=new FUtente();
+        $utente=$FUtente->load($username);
+	$view->impostaDati('immagine_profilo',$utente->immagine_profilo);
+        $view->impostaDati('username',$utente->username);
+        $view->impostaDati('nome',$utente->nome);
+        $view->impostaDati('cognome',$utente->cognome);
+        $view->impostaDati('data_nascita',$utente->data_nascita);
+        $view->impostaDati('citta_residenza',$utente->citta_residenza);
+	$view->impostaDati('citta_nascita',$utente->citta_nascita);
+        $view->impostaDati('email',$utente->email);
+        $view->processaTemplateParziale();
+    }
+    
+    public function gestisciProfilo(){
+        $view=Usingleton::getInstance('VRegistrazione');
+        $view->setLayout('gestisci_profilo');
+        $session = USingleton::getInstance('USession');
+        $username=$session->leggi_valore('username');
+		$FUtente=new FUtente();
+        $utente=$FUtente->load($username);
+		$view->impostaDati('username', $utente->username);
+		$view->impostaDati('immagine_profilo',$utente->immagine_profilo);
+		$FVeicolo = new FVeicolo();
+        $array= $FVeicolo->getVeicoli($username);
+        $view->impostaDati('array',$array);
+        return $view->processaTemplateParziale();
         
     }
     
@@ -167,7 +197,23 @@ class CRegistrazione {
             $view->setLayout('problemi');
             return $view->processaTemplate();
         }
-    }    
+    }
+    
+    public function gestisciViaggi(){
+        $view=Usingleton::getInstance('VRegistrazione');
+        $session = USingleton::getInstance('USession');
+        $username=$session->leggi_valore('username');
+        $FViaggio= new FViaggio();
+        $array_viaggi= $FViaggio->ViaggiPersonali($username);
+        $array_passeggero= $FViaggio->ViaggiPasseggero($username);
+        $view->impostaDati('array_passeggero', $array_passeggero);
+        $view->impostaDati('array_viaggi',$array_viaggi);
+        $view->setLayout('gestisci_viaggi');
+        return $view->processaTemplateParziale();
+            
+        
+    }
+    
      /**
      * Smista le richieste ai relativi metodi della classe
      * 
@@ -183,11 +229,17 @@ class CRegistrazione {
             case 'attivazione':
                 return $this->attivazione();
             case 'visualizza_profilo':
-                return $this->visualizzaProfilo();  
+                return $this->visualizzaProfilo();
+            case 'gestisci_profilo':
+                return $this->gestisciProfilo();
+            case 'gestisci_viaggi':
+                return $this->gestisciViaggi();
             case 'autentica':
                 return $this->confermaLogin();
             case 'esci':
                 return $this->logout();
+            case 'visualizza_utente':
+                return $this->visualizzaUtente($view->getUsername());
         }
     }
 }

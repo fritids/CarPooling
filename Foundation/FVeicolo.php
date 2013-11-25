@@ -6,6 +6,27 @@ class FVeicolo extends FDatabase{
         $this->_return_class='EVeicolo';
         USingleton::getInstance('FDatabase');
     }
+    
+ public function getVeicolo($num_viaggio){
+     $query="SELECT * FROM `guidatore` WHERE `num_viaggio`='$num_viaggio'";
+     $this->query($query);
+     $array=$this->getResultAssoc();
+     return $array;
+ }
+    
+ public function getVeicoli($username){
+     $query="SELECT `targa` FROM `veicolo` WHERE `username_proprietario` = '$username'";
+     $this->query($query);
+     $array=$this->getResultAssoc();
+     return $array;
+ }
+ 
+ public function getPostiVeicolo($targa_presa){
+     $query="SELECT `num_posti` FROM `veicolo` WHERE `targa` = '$targa_presa'";
+     $this->query($query);
+     $posti=$this->getResult();
+     return $posti;
+ }
 }
 
 ?>

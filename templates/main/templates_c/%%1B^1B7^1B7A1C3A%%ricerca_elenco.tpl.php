@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-11-06 17:43:46
+<?php /* Smarty version 2.6.26, created on 2013-11-13 09:47:29
          compiled from ricerca_elenco.tpl */ ?>
 		<br>
         <h1 class="pagetitle">Elenco Viaggi</h1>
@@ -10,7 +10,7 @@
           <div class="contactform" >
             
             <?php if ($this->_tpl_vars['viaggi']): ?>
-<h3> Lista viaggi cercati </h3>
+<h1> Lista viaggi cercati </h1>
 <hr>
 <?php unset($this->_sections['nr']);
 $this->_sections['nr']['name'] = 'nr';

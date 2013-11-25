@@ -1,9 +1,13 @@
 <?php
 class EPasseggero {
-    public $feedback_pass;
-    public $commento_pass;
+    public $username_passeggero;
+    public $num_viaggio;
     public $feedback_guid;
     public $commento_guid;
+    public $votato;
+    
+  
+   
 }
 
 ?>

@@ -51,12 +51,26 @@ class VRegistrazione extends View {
         else
             return false;
     }
+    
+     public function getUsernamePasseggero() {
+        if (isset($_REQUEST['username_passeggero']))
+            return $_REQUEST['username_passeggero'];
+        else
+            return false;
+    }
+    
+   
+    
     /**
      * @return string
      */
     public function processaTemplate() {
         $contenuto=$this->fetch('registrazione_'.$this->_layout.'.tpl');
         return $contenuto;
+    }
+    
+     public function processaTemplateParziale() {
+        $this->display('registrazione_'.$this->_layout.'.tpl');
     }
     /**
      * Restituisce l'array contenente i dati di registrazione
@@ -70,6 +84,7 @@ class VRegistrazione extends View {
             if (isset($_REQUEST[$dato]))
                 $dati[$dato]=$_REQUEST[$dato];
         }
+		$dati["immagine_profilo"]="img/m_imgprofilo.jpg";
         return $dati;
     }
     /**

@@ -1,16 +1,12 @@
-<?php /* Smarty version 2.6.26, created on 2013-11-07 16:25:26
+<?php /* Smarty version 2.6.26, created on 2013-11-12 17:24:14
          compiled from ricerca_ultimi.tpl */ ?>
 		<br>
-        <h1 class="pagetitle">Elenco Viaggi</h1>
-
-        <!-- Content unit - One column -->
-		
-         <script src="js/index.js"></script>         
-        <div class="column1-unit">
+		<script src="js/index.js"></script>
+        <h1 class="pagetitle">Home page</h1>
+		<div><h1 class="block">Ultimi viaggi inseriti</h1></div>
           <div class="contactform" >
             
             <?php if ($this->_tpl_vars['viaggi']): ?>
-<h3> Lista ultimi viaggi inseriti </h3>
 <hr>
 <?php unset($this->_sections['nr']);
 $this->_sections['nr']['name'] = 'nr';
@@ -36,17 +32,16 @@ $this->_sections['nr']['index_next'] = $this->_sections['nr']['index'] + $this->
 $this->_sections['nr']['first']      = ($this->_sections['nr']['iteration'] == 1);
 $this->_sections['nr']['last']       = ($this->_sections['nr']['iteration'] == $this->_sections['nr']['total']);
 ?>
-    <div>     
-        <a class="riepilogo_viaggio" value="<?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['num_viaggio']; ?>
-"><h5><?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['citta_partenza']; ?>
-&nbsp<?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['citta_arrivo']; ?>
-&nbsp<?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['data_partenza']; ?>
+    <div class="pulsante">  
+	<a class="riepilogo_viaggio" value="<?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['num_viaggio']; ?>
+"><h5><?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['data_partenza']; ?>
+&nbsp-&nbspDa:&nbsp<?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['citta_partenza']; ?>
+&nbspA:&nbsp<?php echo $this->_tpl_vars['viaggi'][$this->_sections['nr']['index']]['citta_arrivo']; ?>
 </h5></a>
     </div>  
 <hr>
 <?php endfor; endif; ?>
 <?php else: ?>
 <h3> Non ci sono viaggi</h3>    
-<?php endif; ?>
-           </div>              
-        </div>
+<?php endif; ?>             
+</div>

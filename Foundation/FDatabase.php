@@ -125,6 +125,8 @@ class FDatabase {
         } else
             return false;
     }
+    
+ 
     /**
      * Restiuisce un array di oggetti contenenti il risultato della query
      *

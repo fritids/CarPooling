@@ -1,5 +1,5 @@
-<?php /* Smarty version 2.6.26, created on 2013-11-15 12:08:25
-         compiled from registrazione_visualizza_profilo.tpl */ ?>
+<?php /* Smarty version 2.6.26, created on 2013-11-20 12:08:50
+         compiled from registrazione_visualizza_profilo_utente.tpl */ ?>
 <br>
 <h1 class="pagetitle">Dati profilo</h1>
 <div>

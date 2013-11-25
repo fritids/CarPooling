@@ -8,7 +8,7 @@
           <div class="contactform" >
             
             {if $viaggi}
-<h3> Lista viaggi cercati </h3>
+<h1> Lista viaggi cercati </h1>
 <hr>
 {section name=nr loop=$viaggi}
     <div>     

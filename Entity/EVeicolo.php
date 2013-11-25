@@ -1,6 +1,7 @@
 <?php
 class EVeicolo {
     public $targa;
+    public $username_proprietario;
     public $tipo;
     public $num_posti;
     public $carburante;

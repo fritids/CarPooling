@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generato il: Ott 29, 2013 alle 12:13
+-- Generato il: Nov 13, 2013 alle 17:04
 -- Versione del server: 5.5.27
 -- Versione PHP: 5.4.7
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `guidatore`
 --
 
-DROP TABLE IF EXISTS `guidatore`;
 CREATE TABLE IF NOT EXISTS `guidatore` (
   `num_viaggio` int(11) NOT NULL,
   `username_guidatore` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -54,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `guidatore` (
 -- Struttura della tabella `passeggero`
 --
 
-DROP TABLE IF EXISTS `passeggero`;
 CREATE TABLE IF NOT EXISTS `passeggero` (
   `username_passeggero` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `num_viaggio` int(11) NOT NULL,
@@ -80,7 +78,6 @@ CREATE TABLE IF NOT EXISTS `passeggero` (
 -- Struttura della tabella `utente`
 --
 
-DROP TABLE IF EXISTS `utente`;
 CREATE TABLE IF NOT EXISTS `utente` (
   `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -99,22 +96,12 @@ CREATE TABLE IF NOT EXISTS `utente` (
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dump dei dati per la tabella `utente`
---
-
-INSERT INTO `utente` (`username`, `password`, `nome`, `cognome`, `data_nascita`, `citta_nascita`, `citta_residenza`, `sesso`, `cod_fiscale`, `email`, `num_telefono`, `stato_attivazione`, `codice_attivazione`, `immagine_profilo`) VALUES
-('dd', 'aa', 'rgdfs', 'dfvfd', '3', 'df', 'fd', '', 'fd', 'gbgb', '', 'attivo', '', ''),
-('stefano', '0000', 'stefano', 'altobelli', '01/01/1991', 'pescara', 'pescara', '', 'abcvder', 'stefano@aia.com', '', 'attivo', '', ''),
-('vaan46', '1234', 'daniele', 'ciambrone', '1991-08-17', 'L''Aquila', 'L''Aquila', '', 'CMBDNL91M17A345D', 'vaan46@hotmail.it', '3331234567', 'attivo', '123', '');
-
 -- --------------------------------------------------------
 
 --
 -- Struttura della tabella `veicolo`
 --
 
-DROP TABLE IF EXISTS `veicolo`;
 CREATE TABLE IF NOT EXISTS `veicolo` (
   `targa` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `username_proprietario` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -138,7 +125,6 @@ CREATE TABLE IF NOT EXISTS `veicolo` (
 -- Struttura della tabella `viaggio`
 --
 
-DROP TABLE IF EXISTS `viaggio`;
 CREATE TABLE IF NOT EXISTS `viaggio` (
   `num_viaggio` int(11) NOT NULL AUTO_INCREMENT,
   `citta_partenza` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -149,42 +135,7 @@ CREATE TABLE IF NOT EXISTS `viaggio` (
   `note` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`num_viaggio`),
   UNIQUE KEY `num_viaggio` (`num_viaggio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
-
---
--- Dump dei dati per la tabella `viaggio`
---
-
-INSERT INTO `viaggio` (`num_viaggio`, `citta_partenza`, `data_partenza`, `citta_arrivo`, `costo`, `posti_disponibili`, `note`) VALUES
-(1, 'pescara', '2013-01-01', 'laquila', 0, 0, 'niente'),
-(2, 'pescara', '2013-01-01', 'roma', 0, 0, 'niente'),
-(3, 'madonna', '2013-01-01', 'gesu', 0, 0, 'dio'),
-(4, '1', '2013-01-01', '2', 0, 0, '0'),
-(5, 'per', '2013-01-01', 'la', 0, 0, 'madonna'),
-(6, '', '', '', 0, 0, ''),
-(7, '', '', '', 0, 0, ''),
-(8, '', '', '', 0, 0, ''),
-(9, '', '', '', 0, 0, ''),
-(10, '', '', '', 0, 0, ''),
-(11, '', '', '', 0, 0, ''),
-(12, '', '', '', 0, 0, ''),
-(13, '', '', '', 0, 0, ''),
-(14, '', '', '', 0, 0, ''),
-(15, '', '', '', 0, 0, ''),
-(16, '', '', '', 0, 0, ''),
-(17, '', '', '', 0, 0, ''),
-(18, 'qua', 'mo', 'la', 0, 0, 'bo'),
-(19, 'PARTENZA', 'DATA', 'ARRIVO', 0, 0, 'NIENTE'),
-(20, 'QE', 'QADFA', 'FA', 0, 0, 'FASD'),
-(21, 'adesso', 'esse', 'dovrebbe', 0, 0, '20'),
-(22, '1', '3', '2', 0, 0, '4'),
-(23, 'a', 'a', 'q', 0, 0, 'q'),
-(24, 'a', 'a', 'a', 0, 0, 'a'),
-(25, 'a', 'a', 'a', 0, 0, 'a'),
-(26, 'ad', 'fef', 'ad', 0, 0, 'fs'),
-(27, 'a', 'fw', 'dwq', 0, 0, 'fde'),
-(28, 'qd', 'fw', 'wedf', 0, 0, 'efw'),
-(29, 'porco', 'funziona', 'dio', 0, 0, '');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=59 ;
 
 --
 -- Limiti per le tabelle scaricate
